@@ -19,5 +19,4 @@ class TestTests < MiniTest::Test
   end
 
 
-
 end
