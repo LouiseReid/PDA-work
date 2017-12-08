@@ -39,10 +39,45 @@ describe('calculator', function () {
     assert.equal(calculator.runningTotal, 2)
   })
 
-  it('should be able to perform the operation for the operator clicked', function(){
+  it('should nullify the last opperator clicked when "=" is clicked', function(){
     calculator.operatorClick('+')
+    calculator.operatorClick('-')
+    calculator.operatorClick('*')
+    calculator.operatorClick('/')
     calculator.operatorClick('=')
     assert.equal(calculator.previousOperator, null)
+  })
+
+  it('should add numbers when operator + is pressed', function(){
+    calculator.runningTotal = 2
+    calculator.operatorClick('+')
+    calculator.numberClick(2)
+    calculator.operatorClick('=')
+    assert.equal(calculator.runningTotal, 4)
+  })
+
+  it('should add numbers when operator - is pressed', function(){
+    calculator.runningTotal = 2
+    calculator.operatorClick('-')
+    calculator.numberClick(1)
+    calculator.operatorClick('=')
+    assert.equal(calculator.runningTotal, 1)
+  })
+
+  it('should add numbers when operator * is pressed', function(){
+    calculator.runningTotal = 2
+    calculator.operatorClick('*')
+    calculator.numberClick(3)
+    calculator.operatorClick('=')
+    assert.equal(calculator.runningTotal, 6)
+  })
+
+  it('should add numbers when operator / is pressed', function(){
+    calculator.runningTotal = 10
+    calculator.operatorClick('/')
+    calculator.numberClick(2)
+    calculator.operatorClick('=')
+    assert.equal(calculator.runningTotal, 5)
   })
 
   it('should be able to clear the running total', function(){
